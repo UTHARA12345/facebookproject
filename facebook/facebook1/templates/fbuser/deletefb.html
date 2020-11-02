@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+{% load static %}
+{% load crispy_forms_tags %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="{% static 'admin/css/vendor/login.css' %}" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+  margin-top:55px;
+  height: 100%;
+  width: 169px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.main {
+  margin-left: 160px; /* Same as the width of the sidenav */
+  font-size: 28px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+</head>
+<body>
+<nav class="navbar navbar-light bg-light navbar-dark bg-dark">
+  <a class="navbar-brand">Dashboard</a>
+  <form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form>
+</nav>
+<div class="sidenav">
+     <a href="{%url 'index' %}">Home</a>
+    <a href="{% url 'add_fb' %}">Create</a><br>
+    <a href="{% url 'logout' %}">Logout</a>
+</div>
+  <div class="row">
+    <div class="col-sm">
+    </div>
+    <div class="col-sm">
+      <h1>do you want to delete</h1>
+        <form method="POST">
+        {% csrf_token %}
+        {{ object.employee_name }}
+        <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    <div class="col-sm">
+    </div>
+  </div>
+
+
+
+</body>
+</html>
